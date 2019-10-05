@@ -11,16 +11,16 @@ import com.mycompany.projectmanagement.rest.model.Employee;
 public class EmployeeDAOImpl {
 
 	@Autowired
-	EmployeeDAO employeedao;
+	EmployeeDAO employeeDAO;
 
 	public List<Employee> findAllEmployees() {
 
-		return employeedao.findAll();
+		return employeeDAO.findAll();
 	}
 
 	public Employee findEmployeeById(Long Id) {
 
-		return employeedao.findById(Id).get();
+		return employeeDAO.findById(Id).get();
 	}
 
 }

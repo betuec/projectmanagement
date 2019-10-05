@@ -5,6 +5,7 @@ import javax.persistence.EntityListeners;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,25 +23,24 @@ public class Employee {
 
 	@NotBlank
 	private String emp_name;
-	
+
 	@Email
 	@NotBlank
 	private String emp_email;
-	private String role_id;
-	private Long t_id;
+
+	@OneToOne
+	private Role role;
 
 	public Employee() {
 		super();
 	}
 
-	public Employee(Long emp_id, String emp_name, String emp_email, String role_id, Long t_id) {
-
+	public Employee(Long emp_id, @NotBlank String emp_name, @Email @NotBlank String emp_email, Role role) {
+		super();
 		this.emp_id = emp_id;
 		this.emp_name = emp_name;
 		this.emp_email = emp_email;
-		this.role_id = role_id;
-		this.t_id = t_id;
-
+		this.role = role;
 	}
 
 	public Long getEmp_id() {
@@ -67,20 +67,12 @@ public class Employee {
 		this.emp_email = emp_email;
 	}
 
-	public String getRole_id() {
-		return role_id;
+	public Role getRole() {
+		return role;
 	}
 
-	public void setRole_id(String role_id) {
-		this.role_id = role_id;
-	}
-
-	public Long getT_id() {
-		return t_id;
-	}
-
-	public void setT_id(Long t_id) {
-		this.t_id = t_id;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
 }

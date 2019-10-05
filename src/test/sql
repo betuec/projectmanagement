@@ -1,0 +1,4 @@
+alter table employees drop column role_id
+
+
+drop table employees
